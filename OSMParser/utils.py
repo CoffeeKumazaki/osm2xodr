@@ -273,6 +273,8 @@ def createVirtualLastPointForJunctionRoads(jx,jy,jrxs,jrys,radius = 3.0):
                 continue
             x2 = jrxs[j]
             y2 = jrys[j]
+            if(x == x2 and y == y2):
+              continue
             hdg2 = giveHeading(jx,jy,x2,y2)
             #get the 4 points besides this line
             hdg2_90 = hdg2-np.pi/2.0
