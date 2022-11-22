@@ -772,7 +772,7 @@ class JunctionRoad:
         successorIsBackward = True if self.contactPointSuccessor == "end" else False
         self.laneOffsetA = (abs(self.predecessorlane)-1.0)* np.sign(self.predecessorlane) * self.laneWidth
         laneOffsetEnd = (abs(self.successorlane)-1.0)* np.sign(self.successorlane) * self.laneWidth
-        self.laneOffsetB = -(self.laneOffsetA-laneOffsetEnd)/length
+        self.laneOffsetB = -(self.laneOffsetA-laneOffsetEnd)/length if length > 0.0 else 0.0
 
 
 #Cell
@@ -795,7 +795,7 @@ def createOSMJunctionRoadLine(way1,way2,junctionNode, maxerror=2.0):
                                           "steigung":(giveHeight(xarc,yarc,minRemoved=True)-z1)/distance(x1,y1,xarc,yarc),"length":distance(x1,y1,xarc,yarc)})
     RoadElements.append({"xstart":xarc,"ystart":yarc, "length":length, "heading":giveHeading(x1,y1,x2,y2), "curvature":curvature})
     ElevationElements.append({"xstart":xarc,"ystart":yarc,"zstart":giveHeight(xarc,yarc,minRemoved=True),
-                                      "steigung":(giveHeight(xendline,yendline,minRemoved=True)-giveHeight(xarc,yarc,minRemoved=True))/length,"length":length})
+                                      "steigung":(giveHeight(xendline,yendline,minRemoved=True)-giveHeight(xarc,yarc,minRemoved=True))/length if length > 0 else 0.0 ,"length":length})
     if distance(xendline,yendline,x3,y3) > 0.1:
                 RoadElements.append({"xstart":xendline,"ystart":yendline, "length":distance(xendline,yendline,x3,y3), "heading":giveHeading(xendline,yendline,x3,y3), "curvature":0.0})
                 ElevationElements.append({"xstart":xendline,"ystart":yendline,"zstart":giveHeight(xendline,yendline,minRemoved=True),

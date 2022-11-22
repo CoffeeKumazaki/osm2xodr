@@ -92,7 +92,7 @@ def getArcCurvatureAndLength(xstart,ystart,x_end,y_end, x_curveMid, y_curveMid, 
     y2 = y_curveMid + bestDist*np.sin(hdg_mid2end)
     x_s,y_s,r1,r2 = schnittpunkt(x1,y1,hdg_90_a,x2,y2,hdg_90_b)
     length = abs(r1)*abs(deltaHdg)  #2pi r für vollen kreisbogen
-    curvature = -deltaHdg / length
+    curvature = -deltaHdg / length if length > 0 else 0.0
     return x1,y1,x2,y2,curvature,length
 
 #Cell
