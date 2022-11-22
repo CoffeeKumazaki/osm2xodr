@@ -7,9 +7,14 @@ The requirements are osmread, numpy, PIL and pyproj
 
 If a topographymap is used it should be in 16bit integer format and the max/min latitudes/longitudes of the map should match the points in the osm-file.
 
+## How to use
+
+```
+$ ./osm2xodr.sh osm_file [-o xodr_file] [-t topograph_file]
+```
 
 
+## OpenDrive data Viewer
+https://odrviewer.io/
 
-
-This code was created as a part of
-<p align="center"><img src="https://github.com/JHMeusener/osm2xodr/blob/master/Projekt%20und%20F%C3%B6rderlogos%20EN_28.11.2019.jpg" /></p>
+https://sebastian-pagel.net/odrviewer/index.html

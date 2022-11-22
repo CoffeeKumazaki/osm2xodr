@@ -8,4 +8,4 @@ if [ ! "$(docker image ls -q "$NAME_IMAGE")" ]; then
 fi
 
 PWD=`pwd`
-docker run -it --rm -v ${PWD}:/usr/app ${NAME_IMAGE} /bin/bash
+docker run -it --rm -v ${PWD}:/usr/app ${NAME_IMAGE} python main.py $@
